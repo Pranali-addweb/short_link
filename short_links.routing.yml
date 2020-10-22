@@ -1,0 +1,34 @@
+short_links:
+  path: '/shortlinks/{shorturl}'
+  defaults:
+    _controller: 'Drupal\short_links\Controller\ShortLinksController::getlink'
+    _title: 'Redirect Links'
+  requirements:
+    _permission: 'access content'
+    _access: 'TRUE'
+short_links.data:
+  path: '/thank-you'
+  defaults:
+    _controller: 'Drupal\short_links\Controller\ShortLinksController::shortlink'
+    _title: 'Short Links'
+  requirements:
+    _permission: 'access content'
+    _access: 'TRUE'
+short_links.report:
+  path: /admin/reports/shortlink-report
+  defaults:
+    _controller: 'Drupal\short_links\Controller\ShortLinksController::analyticreport'
+    _title: 'Short Links Report'
+  requirements: 
+    _permission: 'access content'
+    _access: 'TRUE'
+  options:
+    _admin_route: 'TRUE'
+short_links.report-detail:
+  path: '/show-detail/{url_identifier}'
+  defaults:
+    _controller: 'Drupal\short_links\Controller\ShortLinksController::analyticreportdetail'
+    _title: 'Detials of Short Link'
+  requirements:
+    _permission: 'access content'
+    _access: 'TRUE'

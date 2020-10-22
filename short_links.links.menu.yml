@@ -1,0 +1,5 @@
+short_links.analytic_report:
+  title: 'Short Link Reports'
+  route_name: short_links.report
+  parent: system.admin_reports
+  weight: 99

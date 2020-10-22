@@ -1,0 +1,7 @@
+name: Short Links
+type: module
+description: 'Short Links module same as bit.ly.'
+package: Custom
+core: 8.x
+version: 1.0
+core_version_requirement: ^8 || ^9

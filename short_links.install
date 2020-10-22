@@ -1,0 +1,107 @@
+<?php
+
+/**
+ * @file
+ * Install and updates for short_links.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function short_links_schema() {
+  $schema['short_links'] = [
+    'description' => 'The base table for storing short_links.',
+    'fields' => [
+      'id' => [
+        'description' => 'Serial No.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'uid' => [
+        'description' => 'User ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'long_url' => [
+        'description' => 'The long urls.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'identifier' => [
+        'description' => 'The primary identifier for link..',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'short_url' => [
+        'description' => 'The short urls.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  $schema['short_links_details'] = [
+    'description' => 'The base table for storing short_links.',
+    'fields' => [
+      'id' => [
+        'description' => 'Serial no',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'uid' => [
+        'description' => 'User Id.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'long_url' => [
+        'description' => 'The long urls.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'identifier' => [
+        'description' => 'The primary identifier for link.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'redirection_time' => [
+        'description' => 'The redirection Time.',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'ip_add' => [
+        'description' => 'The IP address.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  return $schema;
+}
+
+/**
+ * Implements hook_update().
+ */
+function short_links_update_8001() {
+  db_create_table('short_links', $schema['short_links']);
+  db_create_table('short_links_details', $schema['short_links_details']);
+}
